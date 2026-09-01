@@ -135,7 +135,7 @@
             <!-- Footer Register Link -->
             <p class="text-center text-xs text-gray-400 mt-8">
                 Belum punya akun?
-                <a href="#" class="text-brand-red font-semibold hover:underline">Daftar Sekarang</a>
+                <a href="/user" class="text-brand-red font-semibold hover:underline">Daftar Sekarang</a>
             </p>
 
         </div>

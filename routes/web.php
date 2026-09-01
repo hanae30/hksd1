@@ -3,6 +3,8 @@
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
+
 
 
 
@@ -20,3 +22,5 @@ Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::resource('user', UserController::class);
+
