@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 
 
@@ -23,4 +24,6 @@ Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::resource('user', UserController::class);
+Route::resource('product', ProductController::class);
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 

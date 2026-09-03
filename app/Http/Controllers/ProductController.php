@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $title = "Register";
-        return view('user.create', compact('title'));
+        return view('product.index');
     }
 
     /**
@@ -21,9 +19,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
-        $title = "Register";
-        return view('user.create', compact('title'));
+        return view('product.create');
     }
 
     /**
@@ -31,22 +27,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $validate = $request->validate([
+        $validated = $request->validate([
 
-                'name' => 'required',
-                'email' => 'email|unique:users,email',
-                'password'=>'required|min:6',
-                'phone' => 'required',
-                'address' => 'required',
-
-
+            'category_id' => 'required',
+            'name'     => 'required',
+            'price'    => 'required',
+            'stock'    => 'required',
+            'desc'    => 'required',
+            'image'    => 'required',
+            'weight'    => 'required',
         ]);
 
-        user::create($validate);
-        // alert()->info('User berhasil di tambah','SUCCESS');
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('products', 'public');
+        }
 
-        return redirect()->to('login')->with('success', 'User berhasil ditambah');
+        Product::create($validated);
+
+        return redirect()->route('product.index')->with('success', 'Produk berhasil ditambahkan.');
     }
 
     /**
