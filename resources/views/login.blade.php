@@ -39,7 +39,7 @@
     <!-- HEADER SIMPLE -->
     <header class="bg-brand-nav border-b border-brand-border py-4 px-6">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="homepage.html" class="flex items-center gap-2 cursor-pointer">
+            <a href="/" class="flex items-center gap-2 cursor-pointer">
                 <div class="bg-brand-red text-white font-black px-3 py-1 rounded tracking-wider text-xl">
                     HKSD
                 </div>

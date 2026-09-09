@@ -5,6 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\ListController;
+use App\Http\Controllers\BayarController;
+
+
+
 
 
 
@@ -17,6 +25,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 require __DIR__.'/settings.php';
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
 Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
@@ -24,6 +34,18 @@ Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::resource('user', UserController::class);
-Route::resource('product', ProductController::class);
+
 Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+Route::put('/product/{product}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+Route::put('/category/{category}', [CategoryController::class, 'update'])->name('category.update');
+Route::delete('/category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+Route::get('/detail', [DetailController::class, 'index'])->name('detail.index');
+Route::get('/list', [ListController::class, 'index'])->name('list.index');
+Route::get('/bayar', [BayarController::class, 'index'])->name('bayar.index');
 

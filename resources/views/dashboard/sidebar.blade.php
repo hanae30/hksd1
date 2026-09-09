@@ -45,11 +45,11 @@
                     PRODUK
                 </a>
 
-                <a href="#"
+                <a href="/category"
                     class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-colors
         {{ request()->is('purchase*') ? 'font-bold bg-red-600 text-white shadow-md shadow-red-900/30' : 'text-zinc-400 hover:bg-zinc-800/40 hover:text-white' }}">
                     <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-                    Purchase
+                    Kategori
                 </a>
 
                 <a href="#"
